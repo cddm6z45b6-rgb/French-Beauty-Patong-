@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>French Beauty Patong – Salon de Coiffure</title>
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Montserrat:300,400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      color: #111;
+      background: #fff;
+    }
+    header {
+      text-align: center;
+      padding: 80px 20px;
+      background: #000;
+      color: #fff;
+    }
+    header h1 {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 700;
+    }
+    header p {
+      font-size: 18px;
+      margin-top: 6px;
+    }
+    .section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .divider {
+      width: 60px;
+      height: 2px;
+      background: #000;
+      margin: 16px auto 32px auto;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 10px;
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+    .services-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+    .service-box {
+      background: #f9f9f9;
+      padding: 16px;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 18px;
+      border: 1px solid #eee;
+    }
+    .booking {
+      max-width: 500px;
+      margin: auto;
+      background: #f8f8f8;
+      padding: 32px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      margin-top: 6px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #000;
+      color: white;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #333;
+    }
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 14px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>French Beauty Patong</h1>
+  <p>Salon de coiffure & beauté • Malin Plaza, Patong • Phuket</p>
+</header>
+
+<section class="section">
+  <h2>Bienvenue chez French Beauty</h2>
+  <div class="divider"></div>
+  <p style="text-align:center; max-width:800px; margin:auto;">
+    Notre salon combine élégance, expertise et expérience client inoubliable,
+    inspiré des plus beaux salons internationaux. Offrez-vous une coupe, une couleur,
+    ou un style unique, réalisé par nos coiffeurs professionnels.
+  </p>
+</section>
+
+<section class="section">
+  <h2>Galerie</h2>
+  <div class="divider"></div>
+  <div class="gallery">
+    <!-- Images libres pour remplacer par les tiennes plus tard -->
+    <img src="images/salon-01.jpg" alt="Salon intérieur chic"/>
+    <img src="images/salon-02.jpg" alt="Espace coiffure premium"/>
+    <img src="images/salon-03.jpg" alt="Style haut de gamme"/>
+    <img src="images/salon-04.jpg" alt="Décor moderne et élégant"/>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Nos Services</h2>
+  <div class="divider"></div>
+  <div class="services-list">
+    <div class="service-box">Coupe & Style</div>
+    <div class="service-box">Coloration & Balayage</div>
+    <div class="service-box">Lissage & Traitements</div>
+    <div class="service-box">Conseil Style & Coaching</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Prendre rendez-vous</h2>
+  <div class="divider"></div>
+  <div class="booking">
+    <form id="bookingForm">
+      <label for="name">Nom complet</label>
+      <input type="text" id="name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" required>
+
+      <label for="date">Date</label>
+      <input type="date" id="date" required>
+
+      <label for="time">Heure</label>
+      <select id="time" required>
+        <option value="">Sélectionner</option>
+        <option>14:00</option><option>15:00</option><option>16:00</option>
+        <option>17:00</option><option>18:00</option><option>19:00</option>
+        <option>20:00</option><option>21:00</option><option>22:00</option>
+        <option>23:00</option>
+      </select>
+
+      <button type="submit">Réserver</button>
+    </form>
+    <p id="status"></p>
+  </div>
+</section>
+
+<footer>
+  © 2026 French Beauty Patong – Tous droits réservés
+</footer>
+
+<script>
+  document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const data = {
+      name: this.name.value,
+      email: this.email.value,
+      date: this.date.value,
+      time: this.time.value
+    };
+    const res = await fetch("https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" }
+    });
+    const result = await res.json();
+    document.getElementById('status').textContent = result.status === 'success'
+      ? "Rendez-vous enregistré ✓"
+      : "Erreur, réessayez";
+    this.reset();
+  });
+</script>
+
+</body>
+</html>
